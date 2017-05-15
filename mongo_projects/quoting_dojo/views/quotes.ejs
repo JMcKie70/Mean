@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+	<head>
+		<title>Quoting Dojo Mongoose Quotes</title>
+		<meta charset="utf-8">
+		<style type="text/css">
+			#wrapper{
+				margin:0px auto;
+				padding:0px auto;
+				width:800px;
+				height:700px;
+			}
+			.quotes{
+				width:700px;
+				height:50px;
+				border-bottom: 1px solid black;
+			}
+			.authors{
+				width:500px;
+				height:25px;
+				margin-left:50px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="wrapper">
+			<h1>Here are the awesome quotes!</h1>
+			<br>
+			<% for(i in users){%>
+				<div class="quotes"></div>
+					<h3>"<%= users[i].quote %>"</h3>
+					<p class="authors"><%= users[i].author %> on <%= users[i].createdAt %></p>
+				<%}%>
+		</div>
+	</body>
+</html>

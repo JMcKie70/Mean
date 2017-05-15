@@ -1,0 +1,66 @@
+<html>
+	<head>
+		<title>Survey Form 2</title>
+		<meta charset="utf-8">
+		<style type="text/css">
+			#dynamic{
+				background-color: lightgreen;
+			}
+			fieldset{
+				margin:auto;
+				width:400px;
+			}
+			#button{
+				background-color: blue;
+				color: white;
+				text-align: right;
+			}
+		</style>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script type ="text/javascript" src="/socket.io/socket.io.js"></script>
+        <script type ="text/javascript">
+            $(document).ready(function (){
+				// this triggers the connection event in our server!
+				var socket = io.connect();
+				// we'll write all the socket stuff after the above line!
+				$('#button').click(function (e){
+					e.preventDefault(); //prevents form from submitting
+					socket.emit("posting_form", {name: $('#name').val(), location: $('#location').val(), language: $('#location').val(), comment: $('#comment').val()});
+					});
+					socket.on('random_number', function (data){
+						$('div').html("<fieldset id='dynamic'><p>You emitted the following information to the server: {name: "+data.name+", location: "+data.location+", language: "+data.language+", comment: "+data.comment+"}</p><br><p>Your lucky number emitted by the server is "+data.number+".</p></fieldset>");
+					});
+			})
+        </script>
+	</head>
+	<body>
+		<div>
+		</div>
+		<fieldset>
+			<form>
+				<p><label>Your Name: </label><input id="name" type="text" name="name"></p>
+				<br>
+				<p><label>Dojo Location: </label>
+					<select id="location" name="location">
+						<option value="Mountain View">Mountain View</option>
+						<option value="Seattle">Seattle</option>
+						<option value="Burbank">Burbank</option>
+					</select>
+				</p>
+				<br>
+				<p><label>Favorite Language: </label>
+					<select id="language" name="language">
+						<option value="JavaScript">JavaScript</option>
+						<option value="Python">Python</option>
+						<option value="Ruby">Ruby</option>
+					</select>
+				</p>
+				<br>
+				<p><label>Comment (optional): </label></p>
+				<p><textarea id="comment" name="comment" rows="4" cols="50"></textarea></p>
+				<br>
+				<p><input id="button" type="submit" name="button" value="Submit"></p>
+			</form>
+		</fieldset>
+	</body>
+</html>

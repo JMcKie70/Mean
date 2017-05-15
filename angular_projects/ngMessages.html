@@ -1,0 +1,36 @@
+<head>
+	<title>NG Messages</title>
+	<script type="text/javascript" src="angular-messages/angular-messages.js"></script>
+	<script type="text/javascript">
+		var app = angular.module('app', ['ngMessages'])
+		app.controller('UserController', function($scope){
+			$scope.addUser = function(){
+				console.log($scope.newUser);
+				$scope.newUser = {};
+			}
+		})
+	</script>
+</head>
+<body>
+	<div ng-controller="UserController">
+		<form name="userForm">
+			<input type="text" name="myName" ng-model="newUser.name" required minlength="4">
+			<input type="email" name="myEmail" ng-model="newUser.email" required minlength="2">
+			<input type="password" name="myPassword" ng-model="newUser.password" required minlength="4">
+			<button ng-disabled="userForm.$invalid" ng-click="addUser()">Submit</button>
+		</form>
+		<div ng-messages="userForm.myName.$error">
+			<p ng-messages="required">Name is required.</p>
+			<p ng-messages="minlength">Name must be at least 2 characters.</p>
+		</div>
+		<div ng-messages="userForm.myEmail.$error">
+			<p ng-messages="required">Email is required.</p>
+			<p ng-messages="minlength">Email must be at least 4 characters.</p>
+			<p ng-messages="email">Email must be valid.</p>
+		</div>
+		<div ng-messages="userForm.myPassword.$error">
+			<p ng-messages="required">Password is required.</p>
+			<p ng-messages="minlength">Password must be at least 8 characters.</p>
+		</div>
+	</div>
+</body>

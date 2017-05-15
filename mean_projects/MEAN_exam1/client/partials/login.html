@@ -1,0 +1,12 @@
+<br>
+<h2>Q and A</h2>
+<br>
+<form name="userForm">
+	<label>Name: <input type="text" name="myName" ng-model="newUser.name" required minlength="2"></label>
+	<br>
+	<button ng-disabled="userForm.$invalid" ng-click="login(user)">Enter</button>
+</form>
+<!-- <div ng-messages="userForm.myName.$error">
+	<p ng-messages="required">Name is required.</p>
+	<p ng-messages="minlength">Name must be at least 2 characters.</p>
+</div> -->

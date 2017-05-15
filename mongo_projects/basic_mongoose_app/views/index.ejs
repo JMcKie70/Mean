@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+</body>
+</html>
+<html>
+	<head>
+		<title>Basic Mongoose Index</title>
+		<meta charset="utf-8">
+		<style type="text/css">
+			/*#dynamic{
+				background-color: lightgreen;
+			}*/
+			fieldset{
+				margin:auto;
+				width:400px;
+			}
+			#button{
+				background-color: blue;
+				color: white;
+				text-align: right;
+			}
+		</style>
+		<!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script type ="text/javascript" src="/socket.io/socket.io.js"></script>
+        <script type ="text/javascript">
+            $(document).ready(function (){
+				// this triggers the connection event in our server!
+				var socket = io.connect();
+				// we'll write all the socket stuff after the above line!
+				$('#button').click(function (e){
+					e.preventDefault(); //prevents form from submitting
+					socket.emit("posting_form", {name: $('#name').val(), location: $('#location').val(), language: $('#location').val(), comment: $('#comment').val()});
+					});
+					socket.on('random_number', function (data){
+						$('div').html("<fieldset id='dynamic'><p>You emitted the following information to the server: {name: "+data.name+", location: "+data.location+", language: "+data.language+", comment: "+data.comment+"}</p><br><p>Your lucky number emitted by the server is "+data.number+".</p></fieldset>");
+					});
+			})
+        </script> -->
+	</head>
+	<body>
+		<div>
+			<h1>Users:</h1>
+			<ul>
+				<% for(i in users){%>
+					<li>Name: <%= users[i].name %> | Age: <%= users[i].age %> <a href="/<%= users[i].id %>">Show</a></li>
+				<%}%>
+			</ul>
+		</div>
+		<fieldset>
+			<form action="/users" method="POST">
+				<p><label>Your Name: </label><input id="name" type="text" name="name"></p>
+				<br>
+				<p><label>Your Age: </label><input id="age" type="number" name="age"></p>
+				<br>
+				<p><input id="button" type="submit" name="button" value="Submit"></p>
+			</form>
+		</fieldset>
+	</body>
+</html>

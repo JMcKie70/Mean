@@ -1,0 +1,15 @@
+var mongoose = require('mongoose');
+var path = require('path');
+var fs = require('fs');
+
+mongoose.Promise = global.Promise;
+
+mongoose.connect('mongodb://localhost/mean_wall_demo');
+
+var models_path = path.join(__dirname, '../models/');
+
+fs.readdirSync(models_path).forEach(function(file){
+	if (file.indexOf(".js") >= 0){
+		require(path.join(models_path, file));
+	} //requires any .js files in models folder
+})

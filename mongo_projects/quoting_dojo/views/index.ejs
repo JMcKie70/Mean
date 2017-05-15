@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Quoting Dojo Mongoose</title>
+		<meta charset="utf-8">
+		<style type="text/css">
+			#wrapper{
+				margin:auto;
+				width:800px;
+				height:700px;
+			}
+			#main{
+				width:750px;
+				height: 400px;
+			}
+			#main h3{
+				display: inline-block;
+				width:100px;
+				vertical-align: top;
+				padding-bottom: 20px;
+
+			}
+			textarea{
+				width: 500px;
+				height: 300px;
+				display: inline-block;
+				margin-left: 52px;
+			}
+			#author{
+				margin-left: 50px;
+			}
+			#button{
+				border: 1px solid black;
+			}
+			a{
+				text-decoration: none;
+				color: black;
+				border: 1px solid black;
+				margin-left: 50px;
+				background-color: lightgray;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="wrapper">
+			<h1>Welcome to QuotingDojo</h1>
+			<br>
+			<form action="/quotes" method="POST">
+				<h3><label>Your name: </label><input id="author" type="text" name="author"></h3>
+				<br>
+				<div id="main"><h3><label>Your quote: </label></h3><textarea name="quote">
+				</textarea>
+				</div>
+				<br>
+				<p><input id="button" type="submit" name="button" value="Add my quote!"><a href="/quotes">Skip to quotes!</a></p>
+			</form>
+		</div>
+	</body>
+</html>

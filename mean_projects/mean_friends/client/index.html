@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+	<head>
+		<meta charset="utf-8">
+		<title>Awesome Friends</title>
+	    <script src='angular/angular.js'></script>
+	    <script src='angular-route/angular-route.js'></script>
+	    <script src="assets/app.js"></script>
+	    <script src="assets/factories/friendsFactory.js"></script>
+	    <script src="assets/controllers/homeController.js"></script>
+	    <script src="assets/controllers/newController.js"></script>
+	    <script src="assets/controllers/editController.js"></script>
+	    <script src="assets/controllers/showController.js"></script>
+	</head>
+	<body>
+		<p><a href="#!/new">Create New Friend</a><span></span><a href="#!/">Go Home</a></p>
+		<div ng-view="">
+		
+    	</div>
+	</body>
+</html>

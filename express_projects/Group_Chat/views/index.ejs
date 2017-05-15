@@ -1,0 +1,94 @@
+<html>
+	<head>
+		<title>Group Chat</title>
+		<meta charset="utf-8">
+		<style type="text/css">
+			form{
+				width:700px;
+				height: 700px;
+				margin-left: 50px;
+			}
+			h1{
+				width:600px;
+				text-decoration: underline;
+			}
+			#textarea{
+				width:575px;
+				height: 500px;
+				border:3px solid black;
+				padding-left: 25px;
+			}
+			#message_entry{
+				width:600px;
+				height: 50px;
+				border:3px solid black;
+				padding-left: 20px;
+				font-size: 18px;
+				padding-bottom: 5px;
+			}
+			
+			#button{
+				width:80px;
+				height: 30px;
+				margin-left: 520px;
+				border: 2px solid black;
+				box-shadow: 5px 5px;
+				background-color: white;
+				font-size: 18px;
+			}
+
+		</style>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script type ="text/javascript" src="/socket.io/socket.io.js"></script>
+        <script type ="text/javascript">
+            $(document).ready(function (){
+            	$('form').hide()
+            	var name = prompt("Please enter your name:");
+            	console.log(name);
+            	if (name.length < 1){
+            		alert("Please enter your name to join the chat board");
+            		console.log('name too short!')
+            		name = prompt("Please enter your name:");
+            	}
+        		$('form').show()
+				var socket = io.connect();
+
+				socket.on('old_messages', function (data){
+					console.log(data);
+
+					for(var i=0; i<data.oldmessagesArr.length; i++){
+
+						$('#textarea').prepend("<p>"+data.oldmessagesArr[i].message_author+":  "+data.oldmessagesArr[i].message_content+"</p>");
+
+					}
+				});
+
+				$('#button').click(function (e){
+					e.preventDefault();//prevents form from submitting
+					console.log("in button");
+					socket.emit("message_entry", {message_author: name,message_content: $('#message_entry').val()});
+				});
+				socket.on('new_message', function (data){
+					console.log(data);
+
+
+					$('#textarea').prepend("<p>"+data.author+":  "+data.message+"</p>");
+				});
+			})
+        </script>
+	</head>
+	<body>
+		<form>
+			<h1>Conversation Board</h1>
+			<div id="textarea">
+				
+			</div>
+			<p>
+				<input id="message_entry" type="text" name="message_entry" placeholder="enter your message here">
+			</p>
+			<p>
+				<input id="button" type="submit" name="button" value="Send">
+			</p>
+		</form>
+	</body>
+</html>

@@ -1,0 +1,76 @@
+<html>
+	<head>
+		<title>Survey Form 2</title>
+		<meta charset="utf-8">
+		<style type="text/css">
+			form{
+				padding:0px auto;
+				margin:0px auto;
+				width:800px;
+				height: 600px;
+				border: 1px solid black;
+				vertical-align: middle;
+				text-align: center;
+			}
+			#incrementer{
+				width:300px;
+				height: 100px;
+				background-color: blue;
+				color: white;
+				border: 2px solid black;
+				border-radius: 15px;
+				font-size: 20px;
+			}
+			#resetter{
+				width:100px;
+				height: 30px;
+				background-color: red;
+				color: white;
+				border: 2px solid black;
+				box-shadow: 50px;
+				font-size: 15px;	
+			}
+		</style>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script type ="text/javascript" src="/socket.io/socket.io.js"></script>
+        <script type ="text/javascript">
+            $(document).ready(function (){
+				// this triggers the connection event in our server!
+				var socket = io.connect();
+				// we'll write all the socket stuff after the above line!
+				$('#incrementer').click(function (e){
+					e.preventDefault();
+					console.log("in incrementer") //prevents form from submitting
+					socket.emit("increment", {curr_number: $('span').text()});
+				});
+				socket.on('new_number', function (data){
+					$('span').html(''+data.new_number);
+				});
+				$('#resetter').click(function (e){
+					e.preventDefault(); //prevents form from submitting
+					socket.emit("reset");
+				});
+				socket.on('zero_number', function (data){
+					$('span').html(''+data.zero_number);
+				});
+			})
+        </script>
+	</head>
+	<body>
+			<form>
+				<br>
+				<h1>The button has been pushed <span>0</span> time(s)</h1>
+				<br>
+				<h3>Push the button to update the count!</h3>
+				<p><input id="incrementer" type="submit" name="button" value="Push the epic button"></p>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<p><input id="resetter" type="submit" name="button" value="Reset count"></p>
+			</form>
+	</body>
+</html>

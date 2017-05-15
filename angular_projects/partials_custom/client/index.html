@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" ng-app='app'> 
+  <head>
+  <meta charset="utf-8">
+    <title>Partials and Custom Users</title>
+    <script src="angular/angular.js"></script>
+    <script src="angular-route/angular-route.js"></script>
+    <script src="js/my_angular.js"></script>
+    <style type="text/css">
+      #wrapper{
+        width:600px;
+        height: 500px;
+        border: 2px solid black;
+        padding-left:80px;
+      }
+      table{
+        width:510px;
+        height:50px;
+        border:2px solid black;
+        background-color: lightgray;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <a href="#!/users">Customize Users</a> | <a href="#!/list">User List</a>
+    </div>
+    <div ng-view="">
+            <!-- Partials will load here -->
+    </div>
+  </body>
+</html>

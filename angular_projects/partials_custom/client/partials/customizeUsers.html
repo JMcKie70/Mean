@@ -1,0 +1,22 @@
+<div id="wrapper" ng-controller="CustomizeUsersController">
+    <h2>Users Controller</h2>
+	<p>First Name <input type="text" ng-model="user.first_name"></p>
+	<p>Last Name <input type="text" ng-model="user.last_name"></p>
+	<p>Favorite Language <input type="text" ng-model="user.favorite_language"><span>     </span><input type="submit" value="Create User" ng-click='createUser()'></p>
+	<br>
+	<table>
+		<tr>
+			<th>First Name</th>
+			<th>Last Name</th>
+			<th>Favorite Language</th>
+			<th>Actions</th>
+		</tr>
+		<tr ng-repeat="user in users">
+			<td ng-bind="user.first_name"></td>
+			<td ng-bind="user.last_name"></td>
+			<td ng-bind="user.favorite_language"></td>
+			<td><input type="submit" value="Delete User" ng-click='deleteUser(user)'></td>
+		</tr>
+	</table>
+</div>
+

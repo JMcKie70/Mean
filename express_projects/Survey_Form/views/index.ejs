@@ -1,0 +1,45 @@
+<html>
+	<head>
+		<title>Survey Form</title>
+		<meta charset="utf-8">
+		<style type="text/css">
+			fieldset{
+				margin:auto;
+				width:400px;
+			}
+			#button{
+				background-color: blue;
+				color: white;
+				text-align: right;
+			}
+		</style>
+	</head>
+	<body>
+		<fieldset>
+			<form action="/result" method="POST">
+				<p><label>Your Name: </label><input type="text" name="name"></p>
+				<br>
+				<p><label>Dojo Location: </label>
+					<select name="location">
+						<option value="Mountain View">Mountain View</option>
+						<option value="Seattle">Seattle</option>
+						<option value="Burbank">Burbank</option>
+					</select>
+				</p>
+				<br>
+				<p><label>Favorite Language: </label>
+					<select name="language">
+						<option value="JavaScript">JavaScript</option>
+						<option value="Python">Python</option>
+						<option value="Ruby">Ruby</option>
+					</select>
+				</p>
+				<br>
+				<p><label>Comment (optional): </label></p>
+				<p><textarea name="comment" rows="4" cols="50"></textarea></p>
+				<br>
+				<p><input id="button" type="submit" name="button" value="Submit"></p>
+			</form>
+		</fieldset>
+	</body>
+</html>

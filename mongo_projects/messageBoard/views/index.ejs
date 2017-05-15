@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Message Board</title>
+  </head>
+  <body>
+    <form id="message_form" class="" action="/submit_message" method="post">
+      <p>Name:</p>
+      <input type="text" name="author" value="" placeholder="Enter Name">
+      <p>Message:</p>
+      <textarea name="text" rows="8" cols="80" placeholder="Enter Message"></textarea>
+      <button type="submit" name="button">Post Message</button>
+    </form>
+    <div id="message_display">
+      <% for( message in messages) {%>
+        <div class="message_holder">
+          <p style="color: blue; font-weight:bold;">Name: <%= messages[message].author %></p>
+          <p style="color: blue; font-weight:bold;">Message: <%= messages[message].text %></p>
+          <div class="comment_display">
+            <% if(messages[message].comments) {%>
+              <% for( var i = 0; i < messages[message].comments.length; i++) {%>
+                <div class="comment_holder">
+                  <p style="color: red;font-weight:bold;">Name: <%= messages[message].comments[i].author %></p>
+                  <p style="color: red;font-weight:bold;">Comment: <%= messages[message].comments[i].text %></p>
+                </div>
+              <%}%>
+            <%}%>
+          </div>
+          <form id="comment_form" class="" action="/message/<%= messages[message].id %>" method="post">
+            <p>Name:</p>
+            <input type="text" name="author" value="" placeholder="Enter Name">
+            <p>Comment:</p>
+            <textarea name="text" rows="2" cols="80" placeholder="Enter Comment"></textarea>
+            <button type="submit" name="button">Post Comment</button>
+          </form>
+        </div>
+      <%}%>
+    </div>
+  </body>
+</html>

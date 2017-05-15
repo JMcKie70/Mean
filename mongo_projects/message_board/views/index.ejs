@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome Message Board</title>
+</head>
+
+<body>
+    <h1>Welcome to Message Dojo</h1>
+    <form action="/users" method="post">
+        Name:
+        <input type="text" name='name'><br>
+        Message:
+        <textarea name="message" rows="8" cols="40"></textarea>
+        <input type="submit" value="Post Message!">
+    </form>
+    <% for(i in users){%>
+        <div class="msg-boxes">
+            <h3>Name: <%= users[i].name %></h3>
+            <h3>Message: <%= users[i].message %></h3>
+        </div>
+            <% for(var k = 0; k < users[i].comments.length; k++){%>
+                <h5>"Name: "<%= users[i].comments[k].name %></h5>
+                <h5>"Comment: "<%= users[i].comments[k].comment %></h5>
+            <%}%>
+        <form action="/add_comment/<%=users[i].id%>" method="post">
+        Name:
+        <input type="text" name='name'><br>
+        Comment:
+        <textarea name="comment" rows="8" cols="40"></textarea>
+        <input type="submit" value="Post Comment!">
+    </form>
+    <%}%>
+</body>
+
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Add a New Owl</title>
+		<meta charset="utf-8">
+		<style type="text/css">
+			#wrapper{
+				margin:auto;
+				width:800px;
+				height:700px;
+			}
+			#main{
+				width:750px;
+				height: 400px;
+			}
+			#main h3{
+				display: inline-block;
+				width:100px;
+				vertical-align: top;
+				padding-bottom: 20px;
+
+			}
+			textarea{
+				width: 500px;
+				height: 300px;
+				display: inline-block;
+				margin-left: 52px;
+			}
+			#name{
+				margin-left: 50px;
+			}
+			#button{
+				border: 1px solid black;
+			}
+			a{
+				text-decoration: none;
+				color: black;
+				border: 1px solid black;
+				margin-left: 50px;
+				background-color: lightgray;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="wrapper">
+			<h1>Add a New Owl</h1>
+			<br>
+			<form action="/owls" method="POST">
+				<h3><label>Owl Name: </label><input id="name" type="text" name="name"></h3>
+				<br>
+				<div id="main"><h3><label>Owl Information: </label></h3><textarea name="information">
+				</textarea>
+				</div>
+				<br>
+				<p><input id="button" type="submit" name="button" value="Add Owl!"><a href="/">Go Back</a></p>
+			</form>
+		</div>
+	</body>
+</html>

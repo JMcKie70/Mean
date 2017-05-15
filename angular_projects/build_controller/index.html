@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html ng-app='app'>
+	<head>
+		<meta charset="utf-8">
+		<title>Build a Controller</title>
+		<style type="text/css">
+			#textarea{
+				border:1px solid black;
+				width:120px;
+				height: 300px;
+				margin-left: 291px;
+				padding-left: 10px;
+			}
+		</style>
+		<script type="text/javascript" src="bower_components/angular/angular.js"></script>
+		<script type="text/javascript">
+			var app = angular.module('app', []);
+			app.controller('divController', function($scope){
+				$scope.food = [];
+        		$scope.addFood = function(){
+          			$scope.food.push($scope.favFood);
+          			$scope.favFood = {};
+       			}
+			})
+		</script>
+	</head>
+	<body>
+		<div ng-controller="divController">
+			<form>
+				<p>Favorite Food <input type="text" ng-model='favFood.name'><input type='submit' value='Add Food' ng-click='addFood()'><input type='text' ng-model='food_filter' placeholder="filter..."></p>			
+			</form>
+			Currently typing:  <span ng-bind="favFood.name"></span>
+			<div id="textarea" >
+        		<div ng-repeat="favFood in food | filter:food_filter">
+        			<p ng-bind="favFood.name"></p>
+        		</div>
+        	</div>
+		</div>
+	</body>
+</html>

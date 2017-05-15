@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Add Car Info Page</title>
+		<link rel="stylesheet" type="text/css" href="/stylesheets/new">
+	</head>
+	<body>
+		<p id="links"><a href="/cats">Look at some cool cats!</a><br><a href="/cars">Look at some cool trucks!</a></p>
+		<h1>Add Car Information!</h1>
+		<fieldset>
+			<form action="/register" method="POST">
+				<p><label>Year: </label><input type="number" min="1900" max="2099" step="1" name="year"></p>
+				<p><label>Make: </label><input type="text" name="make"></p>
+				<p><label>Model: </label><input type="text" name="model"></p>
+				<p><label>Description: </label><textarea rows="4" cols="50">
+				</textarea></p>
+				<p><input type="reset" value="Reset"><input type="submit" name="button" value="Submit"></p>
+			</form>
+		</fieldset>
+	</body>
+</html>
